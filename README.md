@@ -39,6 +39,16 @@ public function tools()
 
 Click on the "Subscribers" menu item in your Nova app to see the tool provided by this package.
 
+## Finished features:
+* subcribers list
+* confirmed subscribers metric card
+* total subscribers metric card
+
+## Todo features:
+* newsletter feature
+* email template manager
+* support with email marketing tools, i.e MailChimp
+
 ## Testing
 
 ``` bash
