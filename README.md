@@ -19,7 +19,7 @@ You can install the package in to a Laravel app that uses [Nova](https://nova.la
 composer require cendekia/nova-email-subscribers
 ```
 
-And publish the migration file and migrate:
+And publish the migration file then migrate:
 
 ```bash
 php artisan vendor:publish --tag=email-subscribers
