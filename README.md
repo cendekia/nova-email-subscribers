@@ -9,7 +9,7 @@
 
 Email Subscribers is a tool that needs for blogger, markerter and website owner to manage a list of their subscribers.
 
-Add a screenshot of the tool here.
+![Screenshot](https://i.imgur.com/9R0amY0.png)
 
 ## Installation
 
