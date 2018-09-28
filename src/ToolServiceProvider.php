@@ -2,11 +2,16 @@
 
 namespace Cendekia\EmailSubscribers;
 
-use Laravel\Nova\Nova;
-use Laravel\Nova\Events\ServingNova;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\ServiceProvider;
 use Cendekia\EmailSubscribers\Http\Middleware\Authorize;
+use Cendekia\EmailSubscribers\Models\Subscriber;
+use Cendekia\EmailSubscribers\Policies\SubscriberPolicy;
+use Cendekia\EmailSubscribers\Resources\Subscriber as SubscriberResource;
+use Gate;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\ServiceProvider;
+use Laravel\Nova\Events\ServingNova;
+use Laravel\Nova\Nova;
 
 class ToolServiceProvider extends ServiceProvider
 {
@@ -21,6 +26,14 @@ class ToolServiceProvider extends ServiceProvider
 
         $this->app->booted(function () {
             $this->routes();
+
+            if (Schema::hasTable('email_subscribers')) {
+                Gate::policy(Subscriber::class, SubscriberPolicy::class);
+
+                Nova::resources([
+                    SubscriberResource::class,
+                ]);
+            }
         });
 
         Nova::serving(function (ServingNova $event) {
@@ -57,6 +70,6 @@ class ToolServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->mergeConfigFrom(__DIR__.'/../config/nova-subscriber.php', 'nova-subscriber');
     }
 }
