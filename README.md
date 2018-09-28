@@ -1,4 +1,4 @@
-# Email Subscribers is a tool that needs for blogger, markerter and website owner to manage a list of subscribers
+# Nova Email Subscribers
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/cendekia/nova-email-subscribers.svg?style=flat-square)](https://packagist.org/packages/cendekia/nova-email-subscribers)
 ![CircleCI branch](https://img.shields.io/circleci/project/github/cendekia/nova-email-subscribers/master.svg?style=flat-square)
@@ -7,7 +7,7 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/cendekia/nova-email-subscribers.svg?style=flat-square)](https://packagist.org/packages/cendekia/nova-email-subscribers)
 
 
-This is where your description should go. Try and limit it to a paragraph or two.
+Email Subscribers is a tool that needs for blogger, markerter and website owner to manage a list of their subscribers.
 
 Add a screenshot of the tool here.
 
