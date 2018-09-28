@@ -3,10 +3,12 @@
 namespace Cendekia\EmailSubscribers\Resources;
 
 use App\Nova\Resource;
+use Cendekia\EmailSubscribers\Metrics\ConfirmedSubscribers;
+use Cendekia\EmailSubscribers\Metrics\TotalSubscribers;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\DateTime;
 
 class Subscriber extends Resource {
     /**
@@ -21,6 +23,13 @@ class Subscriber extends Resource {
      * @var string
      */
     public static $title = 'email';
+
+    /**
+     * The columns that should be searched.
+     *
+     * @var array
+     */
+    public static $search = true;
 
     /**
      * Get the search result subtitle for the resource.
@@ -56,11 +65,15 @@ class Subscriber extends Resource {
     {
         return [
             ID::make()->sortable(),
-            Text::make('Name'),
-            Text::make('Email'),
-            Text::make('Status'),
-            Text::make('Provider'),
-            DateTime::make('Last Updated', 'updated_at')->format('DD-MM-YYYY hh:mm:ss'),
+            Text::make('Name')->sortable(),
+            Text::make('Email')->sortable(),
+            Text::make('Status')->resolveUsing(function ($status) {
+                return ucwords($status);
+            })->sortable(),
+            Text::make('Provider')->resolveUsing(function ($provider) {
+                return ucwords($provider);
+            })->sortable(),
+            DateTime::make('Last Updated', 'updated_at')->format('DD-MM-YYYY hh:mm:ss')->sortable(),
         ];
     }
 
@@ -71,7 +84,10 @@ class Subscriber extends Resource {
      */
     public function cards(Request $request)
     {
-        return [];
+        return [
+            new ConfirmedSubscribers,
+            new TotalSubscribers,
+        ];
     }
 
     /**
