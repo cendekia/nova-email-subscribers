@@ -26,6 +26,12 @@ class ToolServiceProvider extends ServiceProvider
         Nova::serving(function (ServingNova $event) {
             //
         });
+
+        $filename = '2018_09_28_043606_create_email_subscribers_table.php';
+
+        $this->publishes([
+            __DIR__.'/../database/migrations/'.$filename => base_path('/database/migrations/'.$filename),
+        ], 'email-subscribers');
     }
 
     /**
