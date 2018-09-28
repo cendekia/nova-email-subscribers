@@ -1,0 +1,44 @@
+{
+    "name": "cendekia/nova-email-subscribers",
+    "description": "Email Subscribers is a tool that needs for blogger, markerter and website owner to build a list of subscribers",
+    "homepage": "https://github.com/cendekia/nova-email-subscribers",
+    "authors": [
+        {
+            "name": "Cendekia Pramana Putra",
+            "email": "me@cendekiapp.com",
+            "role": "Developer"
+        }
+    ],
+    "keywords": [
+        "laravel",
+        "nova",
+        "subscriber",
+        "tool"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": ">=7.1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Cendekia\\EmailSubscribers\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Cendekia\\EmailSubscribers\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Cendekia\\EmailSubscribers\\ToolServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
